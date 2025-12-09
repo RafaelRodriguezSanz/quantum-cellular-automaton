@@ -17,7 +17,7 @@ This is a **research-oriented project**: I wanted to experiment with how classic
 
 ## ⚙️ Features
 
-- Configurable 2D grid (`L x L` qubits)  
+- Configurable 2D grid ($$(L \times L)$$ qubits)  
 - Local unitary rules applied between each cell and its neighbors  
 - Configurable initial state  
 - Temporal evolution with interactive animation in Jupyter Notebook  
@@ -49,7 +49,7 @@ $$
 U_{\text{layer}}(t) = \prod_{i,j} U_{(i,j),(i',j')}
 $$
 
-where \((i', j') \in \text{neighbors}(i,j)\).
+where $$\((i', j') \in \text{neighbors}(i,j)\)$$.
 
 The **discrete-time evolution** is then:
 
@@ -57,7 +57,7 @@ $$
 |\psi(t+1)\rangle = U_{\text{layer}}(t) |\psi(t)\rangle
 $$
 
-Starting from an initial state \( |\psi(0)\rangle \), typically localized excitations or superpositions:
+Starting from an initial state $$\( |\psi(0)\rangle \)$$, typically localized excitations or superpositions:
 
 $$
 |\psi(0)\rangle = \bigotimes_{i,j} |q_{i,j}\rangle
@@ -69,7 +69,7 @@ the state evolves under repeated application of the local unitary layers.
 
 ### Observables: Probability of |1⟩
 
-The probability of finding qubit \(q_k\) in state \(|1\rangle\) is obtained from the wavefunction:
+The probability of finding qubit $$\(q_k\)$$ in state $$\(|1\rangle\)$$ is obtained from the wavefunction:
 
 $$
 P(q_k = 1; t) = \sum_{\substack{b \in \{0,1\}^N \\ b_k = 1}} |\alpha_b(t)|^2
