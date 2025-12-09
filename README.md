@@ -25,6 +25,71 @@ This is a **research-oriented project**: I wanted to experiment with how classic
 
 ---
 
+## 🏛 Theoretical Background
+
+### Wavefunction Evolution
+
+Consider a 2D grid of $$(L \times L)$$ qubits. Let the **total Hilbert space** be $$(\mathcal{H} = (\mathbb{C}^2)^{\otimes N})$$ with $$(N = L^2)$$ qubits.
+
+The **state of the system at time (t)** is described by the wavefunction:
+
+$$|\psi(t)\rangle = \sum_{b \in {0,1}^N} \alpha_b(t) , |b\rangle$$
+
+where $$(|b\rangle = |b_0 b_1 \dots b_{N-1}\rangle)$$ are computational basis states, and $$(\alpha_b(t) \in \mathbb{C})$$ satisfy
+
+$$\sum_{b} |\alpha_b(t)|^2 = 1$$
+
+---
+
+### Local Unitary Evolution
+
+Each qubit interacts with its neighbors via a **local unitary gate (U)**. Let the unitary layer at time step \(t\) be:
+
+$$
+U_{\text{layer}}(t) = \prod_{i,j} U_{(i,j),(i',j')}
+$$
+
+where \((i', j') \in \text{neighbors}(i,j)\).
+
+The **discrete-time evolution** is then:
+
+$$
+|\psi(t+1)\rangle = U_{\text{layer}}(t) |\psi(t)\rangle
+$$
+
+Starting from an initial state \( |\psi(0)\rangle \), typically localized excitations or superpositions:
+
+$$
+|\psi(0)\rangle = \bigotimes_{i,j} |q_{i,j}\rangle
+$$
+
+the state evolves under repeated application of the local unitary layers.
+
+---
+
+### Observables: Probability of |1⟩
+
+The probability of finding qubit \(q_k\) in state \(|1\rangle\) is obtained from the wavefunction:
+
+$$
+P(q_k = 1; t) = \sum_{\substack{b \in \{0,1\}^N \\ b_k = 1}} |\alpha_b(t)|^2
+$$
+
+In the 2D QCA visualization, each frame corresponds to the matrix of probabilities:
+
+$$
+\mathbf{P}(t) =
+\begin{bmatrix}
+P(q_{0,0}=1;t) & \cdots & P(q_{0,L-1}=1;t) \\
+\vdots & \ddots & \vdots \\
+P(q_{L-1,0}=1;t) & \cdots & P(q_{L-1,L-1}=1;t)
+\end{bmatrix}
+$$
+
+This matrix evolves as you apply the local unitary layers over time.
+
+---
+
 ## 📚 References
 
 - **Watrous, J. (1995).** *On one-dimensional quantum cellular automata.* In *Proceedings of the 36th Annual Symposium on Foundations of Computer Science (SFCS)*, pp. 528–537. [Link](https://emoutot.perso.math.cnrs.fr/static/etudes/M2/quantum_slides.pdf)
